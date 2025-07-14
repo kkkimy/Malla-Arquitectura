@@ -1,17 +1,17 @@
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Times New Roman', Georgia;
   padding: 20px;
   background: #f6f6f6;
   color: #333;
 }
 
 h1 {
-  color: #2a2a2a;
+  color: #0b146b;
   text-align: center;
 }
 
 .semestre {
-  background: white;
+  background: #f2e3fa;
   margin: 20px auto;
   padding: 15px;
   border-radius: 10px;
