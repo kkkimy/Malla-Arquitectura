@@ -1,0 +1,29 @@
+body {
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+  background: #f6f6f6;
+  color: #333;
+}
+
+h1 {
+  color: #2a2a2a;
+  text-align: center;
+}
+
+.semestre {
+  background: white;
+  margin: 20px auto;
+  padding: 15px;
+  border-radius: 10px;
+  max-width: 500px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  padding: 8px 0;
+}

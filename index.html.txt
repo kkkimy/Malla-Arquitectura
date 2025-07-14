@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Malla de Arquitectura</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Malla de Arquitectura</h1>
+
+  <div class="semestre" id="semestre1">
+    <h2>1er Semestre</h2>
+    <ul>
+      <li>
+        <input type="checkbox" data-id="mat1" onchange="actualizarEstado(this)"> Dibujo Arquitectónico I
+      </li>
+      <li>
+        <input type="checkbox" data-id="mat2" onchange="actualizarEstado(this)"> Historia del Arte I
+      </li>
+    </ul>
+  </div>
+
+  <div class="semestre" id="semestre2">
+    <h2>2do Semestre</h2>
+    <ul>
+      <li>
+        <input type="checkbox" data-id="mat3" data-prerreq="mat1" disabled onchange="actualizarEstado(this)">
+        Dibujo Arquitectónico II
+      </li>
+      <li>
+        <input type="checkbox" data-id="mat4" data-prerreq="mat2" disabled onchange="actualizarEstado(this)">
+        Historia del Arte II
+      </li>
+    </ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
