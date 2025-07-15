@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pensum de Arquitectura - UASD</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .semestre {
+            margin-bottom: 25px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            background-color: #e9f5ff;
+        }
+        .semestre h2 {
+            color: #0056b3;
+            margin-top: 0;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .materia {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 8px;
+            background-color: #fff;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        .materia input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        .materia label {
+            flex-grow: 1;
+            cursor: pointer;
+        }
+        .materia .prerequisitos {
+            font-size: 0.85em;
+            color: #666;
+            margin-left: 20px;
+        }
+        .materia.desbloqueada {
+            /* Estilo para materias desbloqueadas */
+            opacity: 1;
+        }
+        .materia.bloqueada {
+            opacity: 0.6;
+            /* Estilo para materias bloqueadas */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pensum de Arquitectura - UASD</h1>
+
+        <div class="semestre">
+            <h2>Primer Semestre</h2>
+            <div class="materia" id="ARQ-1310">
+                <input type="checkbox" id="check-ARQ-1310" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-1310">ARQ-1310: Introducción A La Arquitectura</label>
+                <span class="prerequisitos"></span>
+            </div>
+            <div class="materia" id="ARQ-1410">
+                <input type="checkbox" id="check-ARQ-1410" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-1410">ARQ-1410: Dibujo Técnico I-A</label>
+                <span class="prerequisitos"></span>
+            </div>
+            <div class="materia" id="ARQ-1430">
+                <input type="checkbox" id="check-ARQ-1430" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-1430">ARQ-1430: Expresión I</label>
+                <span class="prerequisitos"></span>
+            </div>
+            <div class="materia" id="ARQ-2170">
+                <input type="checkbox" id="check-ARQ-2170" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-2170">ARQ-2170: Diseño Arquitectónico Básico I</label>
+                <span class="prerequisitos">Prerrequisito: (ARQ1430)</span>
+            </div>
+            <div class="materia" id="DOP-1000">
+                <input type="checkbox" id="check-DOP-1000" onchange="actualizarEstadoMateria()">
+                <label for="check-DOP-1000">DOP-1000: Orientación Institucional</label>
+                <span class="prerequisitos"></span>
+            </div>
+            <div class="materia" id="FIL-0110">
+                <input type="checkbox" id="check-FIL-0110" onchange="actualizarEstadoMateria()">
+                <label for="check-FIL-0110">FIL-0110: Int A La Filosofia</label>
+                <span class="prerequisitos"></span>
+            </div>
+            <div class="materia" id="HIS-0110">
+                <input type="checkbox" id="check-HIS-0110" onchange="actualizarEstadoMateria()">
+                <label for="check-HIS-0110">HIS-0110: Fund De His Social Dominicana</label>
+                <span class="prerequisitos"></span>
+            </div>
+            <div class="materia" id="LET-0110">
+                <input type="checkbox" id="check-LET-0110" onchange="actualizarEstadoMateria()">
+                <label for="check-LET-0110">LET-0110: Lengua Española Básica I</label>
+                <span class="prerequisitos"></span>
+            </div>
+            <div class="materia" id="MAT-0140">
+                <input type="checkbox" id="check-MAT-0140" onchange="actualizarEstadoMateria()">
+                <label for="check-MAT-0140">MAT-0140: Matemática Básica</label>
+                <span class="prerequisitos"></span>
+            </div>
+        </div>
+
+        <div class="semestre">
+            <h2>Segundo Semestre</h2>
+            <div class="materia" id="ARQ-1250">
+                <input type="checkbox" id="check-ARQ-1250" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-1250">ARQ-1250: Geometria Descriptiva I-A</label>
+                <span class="prerequisitos">Prerrequisito: ARQ1410 o ARQ1010 o ARQ1050 o ARQ1060</span>
+            </div>
+            <div class="materia" id="ARQ-1420">
+                <input type="checkbox" id="check-ARQ-1420" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-1420">ARQ-1420: Dibujo Arquitectónico I</label>
+                <span class="prerequisitos">Prerrequisito: ARQ1410 o ARQ1010 o ARQ1020 o ARQ1030 o ARQ1040 o ARQ1050 o ARQ1060</span>
+            </div>
+            <div class="materia" id="ARQ-1440">
+                <input type="checkbox" id="check-ARQ-1440" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-1440">ARQ-1440: Expresión II</label>
+                <span class="prerequisitos">Prerrequisito: ARQ1430</span>
+            </div>
+            <div class="materia" id="ARQ-1820">
+                <input type="checkbox" id="check-ARQ-1820" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-1820">ARQ-1820: Historia De La Arquitectura I</label>
+                <span class="prerequisitos">Prerrequisito: ARQ1310</span>
+            </div>
+            <div class="materia" id="ARQ-2180">
+                <input type="checkbox" id="check-ARQ-2180" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-2180">ARQ-2180: Diseño Arquitectónico Basic II</label>
+                <span class="prerequisitos">Prerrequisito: ARQ2170 o ARQ1110 o ARQ1130, (ARQ1430)</span>
+            </div>
+            <div class="materia" id="EFS-0110">
+                <input type="checkbox" id="check-EFS-0110" onchange="actualizarEstadoMateria()">
+                <label for="check-EFS-0110">EFS-0110: Educación Fisica</label>
+                <span class="prerequisitos"></span>
+            </div>
+            <div class="materia" id="LET-0120">
+                <input type="checkbox" id="check-LET-0120" onchange="actualizarEstadoMateria()">
+                <label for="check-LET-0120">LET-0120: Lengua Española Básica II</label>
+                <span class="prerequisitos">Prerrequisito: LET0110 o LET0130 o LET0150</span>
+            </div>
+            <div class="materia" id="MAT-2550">
+                <input type="checkbox" id="check-MAT-2550" onchange="actualizarEstadoMateria()">
+                <label for="check-MAT-2550">MAT-2550: Análisis Matemático</label>
+                <span class="prerequisitos">Prerrequisito: MAT0140 o MAT0120</span>
+            </div>
+            <div class="materia" id="QUI-0140">
+                <input type="checkbox" id="check-QUI-0140" onchange="actualizarEstadoMateria()">
+                <label for="check-QUI-0140">QUI-0140: Quimica Básica</label>
+                <span class="prerequisitos"></span>
+            </div>
+            <div class="materia" id="SOC-0110">
+                <input type="checkbox" id="check-SOC-0110" onchange="actualizarEstadoMateria()">
+                <label for="check-SOC-0110">SOC-0110: Int A Las Ciencias Sociales</label>
+                <span class="prerequisitos"></span>
+            </div>
+        </div>
+
+        <div class="semestre">
+            <h2>Tercer Semestre</h2>
+            <div class="materia" id="ARQ-1230">
+                <input type="checkbox" id="check-ARQ-1230" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-1230">ARQ-1230: Perspectiva Y Sombra</label>
+                <span class="prerequisitos">Prerrequisito: ARQ1250 o ARQ1210, ARQ1420</span>
+            </div>
+            <div class="materia" id="ARQ-2000">
+                <input type="checkbox" id="check-ARQ-2000" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-2000">ARQ-2000: Modelo Arquitectónico</label>
+                <span class="prerequisitos"></span>
+            </div>
+            <div class="materia" id="ARQ-2190">
+                <input type="checkbox" id="check-ARQ-2190" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-2190">ARQ-2190: Diseño Arquitectónico Basi III</label>
+                <span class="prerequisitos">Prerrequisito: ARQ1250 o ARQ1210, ARQ1420, ARQ2170 o ARQ1110 o ARQ1150, ARQ2180 o ARQ1120 o ARQ1160, (ARQ1230), (ARQ1220), (ARQ2340)</span>
+            </div>
+            <div class="materia" id="ARQ-2340">
+                <input type="checkbox" id="check-ARQ-2340" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-2340">ARQ-2340: Teoria De La Arquitectura I</label>
+                <span class="prerequisitos">Prerrequisito: ARQ1310</span>
+            </div>
+            <div class="materia" id="ARQ-2830">
+                <input type="checkbox" id="check-ARQ-2830" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-2830">ARQ-2830: Historia De La Arquitectura II</label>
+                <span class="prerequisitos">Prerrequisito: ARQ1820</span>
+            </div>
+            <div class="materia" id="BIO-0140">
+                <input type="checkbox" id="check-BIO-0140" onchange="actualizarEstadoMateria()">
+                <label for="check-BIO-0140">BIO-0140: Biologia Básica</label>
+                <span class="prerequisitos"></span>
+            </div>
+             <div class="materia" id="FIS-0140">
+                <input type="checkbox" id="check-FIS-0140" onchange="actualizarEstadoMateria()">
+                <label for="check-FIS-0140">FIS-0140: Fisica Básica</label>
+                <span class="prerequisitos"></span>
+            </div>
+            <div class="materia" id="INF-1030">
+                <input type="checkbox" id="check-INF-1030" onchange="actualizarEstadoMateria()">
+                <label for="check-INF-1030">INF-1030: Introducción A La Informática</label>
+                <span class="prerequisitos">Prerrequisito: MAT0140 o MAT0110 o MAT0120 o MAT0130 o MAT0840 o MAT1200</span>
+            </div>
+        </div>
+
+        <div class="semestre">
+            <h2>Cuarto Semestre</h2>
+            <div class="materia" id="ARQ-2250">
+                <input type="checkbox" id="check-ARQ-2250" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-2250">ARQ-2250: Dibujo Con Ordenador I</label>
+                <span class="prerequisitos">Prerrequisito: INF1030 o INF1010</span>
+            </div>
+            <div class="materia" id="ARQ-2330">
+                <input type="checkbox" id="check-ARQ-2330" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-2330">ARQ-2330: Arquitectura Y Clima</label>
+                <span class="prerequisitos"></span>
+            </div>
+            <div class="materia" id="ARQ-2550">
+                <input type="checkbox" id="check-ARQ-2550" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-2550">ARQ-2550: Técnica De Presentación I</label>
+                <span class="prerequisitos">Prerrequisito: ARQ1230</span>
+            </div>
+            <div class="materia" id="ARQ-3110">
+                <input type="checkbox" id="check-ARQ-3110" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-3110">ARQ-3110: Diseño Arquitectónico Basic IV</label>
+                <span class="prerequisitos">Prerrequisito: ARQ2170, ARQ2180, ARQ2190, (ARQ2250), (ARQ2550), (ARQ3350)</span>
+            </div>
+            <div class="materia" id="ARQ-3350">
+                <input type="checkbox" id="check-ARQ-3350" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-3350">ARQ-3350: Teoria De La Arquitectura II</label>
+                <span class="prerequisitos">Prerrequisito: ARQ2340</span>
+            </div>
+            <div class="materia" id="ARQ-3500">
+                <input type="checkbox" id="check-ARQ-3500" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-3500">ARQ-3500: Estatical</label>
+                <span class="prerequisitos">Prerrequisito: MAT2550, FIS0140 o FIS0180 o FIS0200</span>
+            </div>
+            <div class="materia" id="ARQ-3840">
+                <input type="checkbox" id="check-ARQ-3840" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-3840">ARQ-3840: Historia De La Arquitect Ill</label>
+                <span class="prerequisitos">Prerrequisito: ARQ2830</span>
+            </div>
+            <div class="materia" id="SOC-1270">
+                <input type="checkbox" id="check-SOC-1270" onchange="actualizarEstadoMateria()">
+                <label for="check-SOC-1270">SOC-1270: Métodos Y Tec De Investigación</label>
+                <span class="prerequisitos">Prerrequisito: ICS0110 o SOC0100</span>
+            </div>
+        </div>
+
+        <div class="semestre">
+            <h2>Quinto Semestre</h2>
+            <div class="materia" id="AGM-1330">
+                <input type="checkbox" id="check-AGM-1330" onchange="actualizarEstadoMateria()">
+                <label for="check-AGM-1330">AGM-1330: Topografia Para Arquitectos</label>
+                <span class="prerequisitos">Prerrequisito: ARQ1410 o ARQ1010 o ARQ1050 o ARQ1060</span>
+            </div>
+            <div class="materia" id="ARQ-2300">
+                <input type="checkbox" id="check-ARQ-2300" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-2300">ARQ-2300: Arq Y Comportamiento Humano</label>
+                <span class="prerequisitos"></span>
+            </div>
+            <div class="materia" id="ARQ-3120">
+                <input type="checkbox" id="check-ARQ-3120" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-3120">ARQ-3120: Diseño Arquitectónico Básico V</label>
+                <span class="prerequisitos">Prerrequisito: ARQ3110, ARQ2190, ARQ2180, ARQ2170, (ARQ2300), (SOC2110)</span>
+            </div>
+            <div class="materia" id="ARQ-4510">
+                <input type="checkbox" id="check-ARQ-4510" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-4510">ARQ-4510: Resistencia De Materiales</label>
+                <span class="prerequisitos">Prerrequisito: ARQ3500 o CIV1020</span>
+            </div>
+            <div class="materia" id="ARQ-4550">
+                <input type="checkbox" id="check-ARQ-4550" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-4550">ARQ-4550: Materiales Y Met De Const I</label>
+                <span class="prerequisitos"></span>
+            </div>
+            <div class="materia" id="SOC-2110">
+                <input type="checkbox" id="check-SOC-2110" onchange="actualizarEstadoMateria()">
+                <label for="check-SOC-2110">SOC-2110: Arquitectura Y Sociedad</label>
+                <span class="prerequisitos">Prerrequisito: ICS0110 o SOC0100</span>
+            </div>
+        </div>
+
+        <div class="semestre">
+            <h2>Sexto Semestre</h2>
+            <div class="materia" id="ARQ-3240">
+                <input type="checkbox" id="check-ARQ-3240" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-3240">ARQ-3240: Interiores</label>
+                <span class="prerequisitos">Prerrequisito: AGM1330, ARQ2300, ARQ2170, ARQ4510, ARQ4550, SOC2110</span>
+            </div>
+            <div class="materia" id="ARQ-3410">
+                <input type="checkbox" id="check-ARQ-3410" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-3410">ARQ-3410: Urbanismo I</label>
+                <span class="prerequisitos">Prerrequisito: AGM1330, ARQ2300, ARQ2170, ARQ4510, ARQ4550, SOC2110</span>
+            </div>
+            <div class="materia" id="ARQ-3580">
+                <input type="checkbox" id="check-ARQ-3580" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-3580">ARQ-3580: Diseño Estructural I</label>
+                <span class="prerequisitos">Prerrequisito: AGM1330, ARQ2300, ARQ2170, ARQ4510, ARQ4550, SOC2110</span>
+            </div>
+            <div class="materia" id="ARQ-4110">
+                <input type="checkbox" id="check-ARQ-4110" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-4110">ARQ-4110: Diseño Arquitectónico VI</label>
+                <span class="prerequisitos">Prerrequisito: AGM1330, ARQ4510, ARQ4550, ARQ3110, ARQ2190, ARQ2180, ARQ2300, ARQ3120, ARQ2170</span>
+            </div>
+            <div class="materia" id="ARQ-4500">
+                <input type="checkbox" id="check-ARQ-4500" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-4500">ARQ-4500: Instalaciones Sanitarias</label>
+                <span class="prerequisitos">Prerrequisito: AGM1330, ARQ2300, ARQ2170, ARQ4510, ARQ4550, SOC2110</span>
+            </div>
+            <div class="materia" id="ARQ-4560">
+                <input type="checkbox" id="check-ARQ-4560" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-4560">ARQ-4560: Materiales Y Met De Const II</label>
+                <span class="prerequisitos">Prerrequisito: AGM1330, ARQ2300, ARQ2170, ARQ4510, ARQ4550, SOC2110</span>
+            </div>
+        </div>
+
+        <div class="semestre">
+            <h2>Séptimo Semestre</h2>
+            <div class="materia" id="ARQ-3420">
+                <input type="checkbox" id="check-ARQ-3420" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-3420">ARQ-3420: Urbanismo II</label>
+                <span class="prerequisitos">Prerrequisito: ARQ3410</span>
+            </div>
+            <div class="materia" id="ARQ-3590">
+                <input type="checkbox" id="check-ARQ-3590" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-3590">ARQ-3590: Diseño Estructural II</label>
+                <span class="prerequisitos">Prerrequisito: ARQ3580</span>
+            </div>
+            <div class="materia" id="ARQ-4120">
+                <input type="checkbox" id="check-ARQ-4120" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-4120">ARQ-4120: Diseño Arquitectónico VII</label>
+                <span class="prerequisitos">Prerrequisito: ARQ4110, ARQ3110, ARQ2190, ARQ2180, ARQ3120, ARQ2170</span>
+            </div>
+            <div class="materia" id="IEM-3540">
+                <input type="checkbox" id="check-IEM-3540" onchange="actualizarEstadoMateria()">
+                <label for="check-IEM-3540">IEM-3540: Inst Elect Y Luminotecnia I</label>
+                <span class="prerequisitos"></span>
+            </div>
+        </div>
+
+        <div class="semestre">
+            <h2>Octavo Semestre</h2>
+            <div class="materia" id="ADM-1120">
+                <input type="checkbox" id="check-ADM-1120" onchange="actualizarEstadoMateria()">
+                <label for="check-ADM-1120">ADM-1120: Principios De Administración</label>
+                <span class="prerequisitos"></span>
+            </div>
+            <div class="materia" id="ARQ-3430">
+                <input type="checkbox" id="check-ARQ-3430" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-3430">ARQ-3430: Urbanismo III</label>
+                <span class="prerequisitos">Prerrequisito: ARQ3420, ARQ3410</span>
+            </div>
+            <div class="materia" id="ARQ-3610">
+                <input type="checkbox" id="check-ARQ-3610" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-3610">ARQ-3610: Costo Y Presupuesto I</label>
+                <span class="prerequisitos">Prerrequisito: ARQ4500 o CIV3530, IEM3540</span>
+            </div>
+            <div class="materia" id="ARQ-4190">
+                <input type="checkbox" id="check-ARQ-4190" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-4190">ARQ-4190: Diseño Arquitectónico VIII</label>
+                <span class="prerequisitos">Prerrequisito: ARQ4120, ARQ3120, ARQ3110, ARQ2190, ARQ2180, ARQ4110, ARQ2170 o ARQ4120</span>
+            </div>
+        </div>
+
+        <div class="semestre">
+            <h2>Noveno Semestre</h2>
+            <div class="materia" id="ARQ-5120">
+                <input type="checkbox" id="check-ARQ-5120" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-5120">ARQ-5120: Trabajo De Grado I</label>
+                <span class="prerequisitos">Prerrequisito: ADM1120, ARQ3430, ARQ3610, ARQ4190</span>
+            </div>
+            <div class="materia" id="ARQ-5610">
+                <input type="checkbox" id="check-ARQ-5610" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-5610">ARQ-5610: Práctica De La Arquitectura</label>
+                <span class="prerequisitos"></span>
+            </div>
+            <div class="materia" id="ARQ-5630">
+                <input type="checkbox" id="check-ARQ-5630" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-5630">ARQ-5630: Organización Y Adm De Obras I</label>
+                <span class="prerequisitos">Prerrequisito: ADM1120, ARQ3430, ARQ3610</span>
+            </div>
+            <div class="materia" id="ARQ-2220">
+                <input type="checkbox" id="check-ARQ-2220" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-2220">ARQ-2220: Asignatura Optativa</label>
+                <span class="prerequisitos"></span>
+            </div>
+            <div class="materia" id="ARQ-2260">
+                <input type="checkbox" id="check-ARQ-2260" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-2260">ARQ-2260: Dibujo Con Ordenador II (Optativa)</label>
+                <span class="prerequisitos">Prerrequisito: ARQ2250, ARQ3110</span>
+            </div>
+            <div class="materia" id="ARQ-2560">
+                <input type="checkbox" id="check-ARQ-2560" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-2560">ARQ-2560: Técnica De Presentación II (Optativa)</label>
+                <span class="prerequisitos">Prerrequisito: ARQ2550, ARQ3110</span>
+            </div>
+             <div class="materia" id="ARQ-3340">
+                <input type="checkbox" id="check-ARQ-3340" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-3340">ARQ-3340: Arquitectura Y Ambiente (Optativa)</label>
+                <span class="prerequisitos">Prerrequisito: ARQ2330</span>
+            </div>
+            <div class="materia" id="ARQ-3440">
+                <input type="checkbox" id="check-ARQ-3440" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-3440">ARQ-3440: Urbanismo IV (Optativa)</label>
+                <span class="prerequisitos">Prerrequisito: ADM1120, ARQ3430, ARQ3610, ARQ3420, ARQ3410, ARQ4190</span>
+            </div>
+            <div class="materia" id="ARQ-3450">
+                <input type="checkbox" id="check-ARQ-3450" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-3450">ARQ-3450: Diseño Urbano (Optativa)</label>
+                <span class="prerequisitos">Prerrequisito: ADM1120, ARQ3430, ARQ3610, ARQ4190</span>
+            </div>
+            <div class="materia" id="ARQ-3530">
+                <input type="checkbox" id="check-ARQ-3530" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-3530">ARQ-3530: Maqueta (Optativa)</label>
+                <span class="prerequisitos">Prerrequisito: ARQ2000 o ARQ3570, ARQ3110 o ARQ2160</span>
+            </div>
+             <div class="materia" id="ARQ-3860">
+                <input type="checkbox" id="check-ARQ-3860" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-3860">ARQ-3860: Panorama De La Arq Actual (Optativa)</label>
+                <span class="prerequisitos">Prerrequisito: ARQ2830, ARQ4110</span>
+            </div>
+             <div class="materia" id="ARQ-3870">
+                <input type="checkbox" id="check-ARQ-3870" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-3870">ARQ-3870: Historia De La Arq En Rep Dom (Optativa)</label>
+                <span class="prerequisitos">Prerrequisito: ARQ2830</span>
+            </div>
+            <div class="materia" id="ARQ-4520">
+                <input type="checkbox" id="check-ARQ-4520" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-4520">ARQ-4520: Estructura En Maderas (Optativa)</label>
+                <span class="prerequisitos">Prerrequisito: ARQ3590, ARQ4120</span>
+            </div>
+            <div class="materia" id="ARQ-4530">
+                <input type="checkbox" id="check-ARQ-4530" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-4530">ARQ-4530: Estructura En Metal (Optativa)</label>
+                <span class="prerequisitos">Prerrequisito: ARQ3590, ARQ4120</span>
+            </div>
+            <div class="materia" id="ARQ-4620">
+                <input type="checkbox" id="check-ARQ-4620" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-4620">ARQ-4620: Costo Y Presupuesto II (Optativa)</label>
+                <span class="prerequisitos">Prerrequisito: ARQ3610, ARQ5120</span>
+            </div>
+            <div class="materia" id="ARQ-5230">
+                <input type="checkbox" id="check-ARQ-5230" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-5230">ARQ-5230: Paisajismo (Optativa)</label>
+                <span class="prerequisitos">Prerrequisito: ARQ3430, ARQ3610, ARQ4190, ADM1120 o ADM1150</span>
+            </div>
+            <div class="materia" id="ARQ-5640">
+                <input type="checkbox" id="check-ARQ-5640" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-5640">ARQ-5640: Organización Y Adm De Obras II (Optativa)</label>
+                <span class="prerequisitos">Prerrequisito: ARQ5120, ARQ5630</span>
+            </div>
+            <div class="materia" id="ARQ-5890">
+                <input type="checkbox" id="check-ARQ-5890" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-5890">ARQ-5890: Restauración De Monumentos (Optativa)</label>
+                <span class="prerequisitos">Prerrequisito: ARQ2830, ARQ4110</span>
+            </div>
+            <div class="materia" id="CON-4200">
+                <input type="checkbox" id="check-CON-4200" onchange="actualizarEstadoMateria()">
+                <label for="check-CON-4200">CON-4200: Fund Cont De Costos Para Ing (Optativa)</label>
+                <span class="prerequisitos">Prerrequisito: ARQ5120 o ARQ5630</span>
+            </div>
+        </div>
+
+        <div class="semestre">
+            <h2>Décimo Semestre</h2>
+            <div class="materia" id="ARQ-5130">
+                <input type="checkbox" id="check-ARQ-5130" onchange="actualizarEstadoMateria()">
+                <label for="check-ARQ-5130">ARQ-5130: Trabajo De Grado II</label>
+                <span class="prerequisitos">Prerrequisito: ARQ5120 o ARQ5140 o ARQ5190 o ARQ5210</span>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const materias = {
+            "ARQ-1310": { prerequisitos: [] },
+            "ARQ-1410": { prerequisitos: [] },
+            "ARQ-1430": { prerequisitos: [] },
+            "ARQ-2170": { prerequisitos: ["ARQ1430"] }, // (ARQ1430) es co-requisito, se trata como prerrequisito para el desbloqueo.
+            "DOP-1000": { prerequisitos: [] },
+            "FIL-0110": { prerequisitos: [] },
+            "HIS-0110": { prerequisitos: [] },
+            "LET-0110": { prerequisitos: [] },
+            "MAT-0140": { prerequisitos: [] },
+
+            "ARQ-1250": { prerequisitos: ["ARQ1410", "ARQ1010", "ARQ1050", "ARQ1060"], tipo_or: true }, // "o"
+            "ARQ-1420": { prerequisitos: ["ARQ1410", "ARQ1010", "ARQ1020", "ARQ1030", "ARQ1040", "ARQ1050", "ARQ1060"], tipo_or: true }, // "o"
+            "ARQ-1440": { prerequisitos: ["ARQ1430"] },
+            "ARQ-1820": { prerequisitos: ["ARQ1310"] },
+            "ARQ-2180": { prerequisitos: ["ARQ2170", "ARQ1110", "ARQ1130", "ARQ1430"], tipo_or: true, co_req: ["ARQ1430"] }, // (ARQ1430) es co-requisito
+            "EFS-0110": { prerequisitos: [] },
+            "LET-0120": { prerequisitos: ["LET0110", "LET0130", "LET0150"], tipo_or: true }, // "o"
+            "MAT-2550": { prerequisitos: ["MAT0140", "MAT0120"], tipo_or: true }, // "o"
+            "QUI-0140": { prerequisitos: [] },
+            "SOC-0110": { prerequisitos: [] },
+
+            "ARQ-1230": { prerequisitos: ["ARQ1250", "ARQ1210", "ARQ1420"], tipo_or_grupo: [["ARQ1250", "ARQ1210"]], tipo_and: ["ARQ1420"] }, // "o" y "y"
+            "ARQ-2000": { prerequisitos: [] },
+            "ARQ-2190": { prerequisitos: ["ARQ1250", "ARQ1210", "ARQ1420", "ARQ2170", "ARQ1110", "ARQ1150", "ARQ2180", "ARQ1120", "ARQ1160", "ARQ1230", "ARQ1220", "ARQ2340"],
+                          tipo_or_grupo: [["ARQ1250", "ARQ1210"], ["ARQ2170", "ARQ1110", "ARQ1150"], ["ARQ2180", "ARQ1120", "ARQ1160"]],
+                          tipo_and: ["ARQ1420"],
+                          co_req: ["ARQ1230", "ARQ1220", "ARQ2340"] },
+            "ARQ-2340": { prerequisitos: ["ARQ1310"] },
+            "ARQ-2830": { prerequisitos: ["ARQ1820"] },
+            "BIO-0140": { prerequisitos: [] },
+            "FIS-0140": { prerequisitos: [] },
+            "INF-1030": { prerequisitos: ["MAT0140", "MAT0110", "MAT0120", "MAT0130", "MAT0840", "MAT1200"], tipo_or: true },
+
+            "ARQ-2250": { prerequisitos: ["INF1030", "INF1010"], tipo_or: true },
+            "ARQ-2330": { prerequisitos: [] },
+            "ARQ-2550": { prerequisitos: ["ARQ1230"] },
+            "ARQ-3110": { prerequisitos: ["ARQ2170", "ARQ2180", "ARQ2190", "ARQ2250", "ARQ2550", "ARQ3350"], co_req: ["ARQ2250", "ARQ2550", "ARQ3350"] },
+            "ARQ-3350": { prerequisitos: ["ARQ2340"] },
+            "ARQ-3500": { prerequisitos: ["MAT2550", "FIS0140", "FIS0180", "FIS0200"], tipo_or_grupo: [], tipo_and: ["MAT2550"], tipo_or_req: ["FIS0140", "FIS0180", "FIS0200"] }, // MAT2550 y (FIS0140 o FIS0180 o FIS0200)
+            "ARQ-3840": { prerequisitos: ["ARQ2830"] },
+            "SOC-1270": { prerequisitos: ["ICS0110", "SOC0100"], tipo_or: true },
+
+            "AGM-1330": { prerequisitos: ["ARQ1410", "ARQ1010", "ARQ1050", "ARQ1060"], tipo_or: true },
+            "ARQ-2300": { prerequisitos: [] },
+            "ARQ-3120": { prerequisitos: ["ARQ3110", "ARQ2190", "ARQ2180", "ARQ2170", "ARQ2300", "SOC2110"], co_req: ["ARQ2300", "SOC2110"] },
+            "ARQ-4510": { prerequisitos: ["ARQ3500", "CIV1020"], tipo_or: true },
+            "ARQ-4550": { prerequisitos: [] },
+            "SOC-2110": { prerequisitos: ["ICS0110", "SOC0100"], tipo_or: true },
+
+            "ARQ-3240": { prerequisitos: ["AGM1330", "ARQ2300", "ARQ2170", "ARQ4510", "ARQ4550", "SOC2110"] },
+            "ARQ-3410": { prerequisitos: ["AGM1330", "ARQ2300", "ARQ2170", "ARQ4510", "ARQ4550", "SOC2110"] },
+            "ARQ-3580": { prerequisitos: ["AGM1330", "ARQ2300", "ARQ2170", "ARQ4510", "ARQ4550", "SOC2110"] },
+            "ARQ-4110": { prerequisitos: ["AGM1330", "ARQ4510", "ARQ4550", "ARQ3110", "ARQ2190", "ARQ2180", "ARQ2300", "ARQ3120", "ARQ2170"] },
+            "ARQ-4500": { prerequisitos: ["AGM1330", "ARQ2300", "ARQ2170", "ARQ4510", "ARQ4550", "SOC2110"] },
+            "ARQ-4560": { prerequisitos: ["AGM1330", "ARQ2300", "ARQ2170", "ARQ4510", "ARQ4550", "SOC2110"] },
+
+            "ARQ-3420": { prerequisitos: ["ARQ3410"] },
+            "ARQ-3590": { prerequisitos: ["ARQ3580"] },
+            "ARQ-4120": { prerequisitos: ["ARQ4110", "ARQ3110", "ARQ2190", "ARQ2180", "ARQ3120", "ARQ2170"] },
+            "IEM-3540": { prerequisitos: [] },
+
+            "ADM-1120": { prerequisitos: [] },
+            "ARQ-3430": { prerequisitos: ["ARQ3420", "ARQ3410"] },
+            "ARQ-3610": { prerequisitos: ["ARQ4500", "CIV3530", "IEM3540"], tipo_or_grupo: [["ARQ4500", "CIV3530"]], tipo_and: ["IEM3540"] }, // ARQ4500 o CIV3530 y IEM3540
+            "ARQ-4190": { prerequisitos: ["ARQ4120", "ARQ3120", "ARQ3110", "ARQ2190", "ARQ2180", "ARQ4110", "ARQ2170", "ARQ4120"], tipo_or_grupo: [["ARQ2170", "ARQ4120"]], tipo_and: ["ARQ4120", "ARQ3120", "ARQ3110", "ARQ2190", "ARQ2180", "ARQ4110"] }, // Todos "y", pero con la última parte "o"
+            
+            "ARQ-5120": { prerequisitos: ["ADM1120", "ARQ3430", "ARQ3610", "ARQ4190"] },
+            "ARQ-5610": { prerequisitos: [] },
+            "ARQ-5630": { prerequisitos: ["ADM1120", "ARQ3430", "ARQ3610"] },
+            "ARQ-2220": { prerequisitos: [] }, // Optativa, no tiene prerrequisitos específicos del pensum
+            // Optativas del Noveno Semestre
+            "ARQ-2260": { prerequisitos: ["ARQ2250", "ARQ3110"] },
+            "ARQ-2560": { prerequisitos: ["ARQ2550", "ARQ3110"] },
+            "ARQ-3340": { prerequisitos: ["ARQ2330"] },
+            "ARQ-3440": { prerequisitos: ["ADM1120", "ARQ3430", "ARQ3610", "ARQ3420", "ARQ3410", "ARQ4190"] },
+            "ARQ-3450": { prerequisitos: ["ADM1120", "ARQ3430", "ARQ3610", "ARQ4190"] },
+            "ARQ-3530": { prerequisitos: ["ARQ2000", "ARQ3570", "ARQ3110", "ARQ2160"], tipo_or_grupo: [["ARQ2000", "ARQ3570"], ["ARQ3110", "ARQ2160"]], tipo_and: [] }, // (ARQ2000 o ARQ3570) y (ARQ3110 o ARQ2160)
+            "ARQ-3860": { prerequisitos: ["ARQ2830", "ARQ4110"] },
+            "ARQ-3870": { prerequisitos: ["ARQ2830"] },
+            "ARQ-4520": { prerequisitos: ["ARQ3590", "ARQ4120"] },
+            "ARQ-4530": { prerequisitos: ["ARQ3590", "ARQ4120"] },
+            "ARQ-4620": { prerequisitos: ["ARQ3610", "ARQ5120"] },
+            "ARQ-5230": { prerequisitos: ["ARQ3430", "ARQ3610", "ARQ4190", "ADM1120", "ADM1150"], tipo_or_grupo: [["ADM1120", "ADM1150"]], tipo_and: ["ARQ3430", "ARQ3610", "ARQ4190"] }, // ARQ3430, ARQ3610, ARQ4190, (ADM1120 o ADM1150)
+            "ARQ-5640": { prerequisitos: ["ARQ5120", "ARQ5630"] },
+            "ARQ-5890": { prerequisitos: ["ARQ2830", "ARQ4110"] },
+            "CON-4200": { prerequisitos: ["ARQ5120", "ARQ5630"], tipo_or: true },
+
+            "ARQ-5130": { prerequisitos: ["ARQ5120", "ARQ5140", "ARQ5190", "ARQ5210"], tipo_or: true } // "o"
+        };
+
+        function checkPrerequisites(materiaId) {
+            const materiaInfo = materias[materiaId];
+            if (!materiaInfo || materiaInfo.prerequisitos.length === 0) {
+                return true; // No tiene prerrequisitos, siempre desbloqueada
+            }
+
+            // Manejo de prerrequisitos "o" (tipo_or: true)
+            if (materiaInfo.tipo_or) {
+                return materiaInfo.prerequisitos.some(prereq => {
+                    const prereqCheckbox = document.getElementById(`check-${prereq}`);
+                    return prereqCheckbox && prereqCheckbox.checked;
+                });
+            }
+
+            // Manejo de prerrequisitos que combinan "o" y "y" (tipo_or_grupo y tipo_and)
+            if (materiaInfo.tipo_or_grupo && materiaInfo.tipo_or_grupo.length > 0) {
+                let allAndGroupsMet = true;
+                for (const andReq of materiaInfo.tipo_and) {
+                    const andReqCheckbox = document.getElementById(`check-${andReq}`);
+                    if (!andReqCheckbox || !andReqCheckbox.checked) {
+                        allAndGroupsMet = false;
+                        break;
+                    }
+                }
+                if (!allAndGroupsMet) return false;
+
+                let anyOrGroupMet = false;
+                for (const orGroup of materiaInfo.tipo_or_grupo) {
+                    if (orGroup.some(prereq => {
+                        const prereqCheckbox = document.getElementById(`check-${prereq}`);
+                        return prereqCheckbox && prereqCheckbox.checked;
+                    })) {
+                        anyOrGroupMet = true;
+                        break;
+                    }
+                }
+
+                // Manejo de tipo_or_req para ARQ-3500 y SOC-1270, INF-1030
+                if (materiaInfo.tipo_or_req && materiaInfo.tipo_or_req.length > 0) {
+                    const specificOrMet = materiaInfo.tipo_or_req.some(prereq => {
+                        const prereqCheckbox = document.getElementById(`check-${prereq}`);
+                        return prereqCheckbox && prereqCheckbox.checked;
+                    });
+                    return allAndGroupsMet && specificOrMet;
+                }
+
+                return anyOrGroupMet; // Si hay grupos 'o', al menos uno debe cumplirse
+            }
+            
+            // Manejo de prerrequisitos "y" (por defecto si no es tipo_or ni tiene grupos)
+            return materiaInfo.prerequisitos.every(prereq => {
+                const prereqCheckbox = document.getElementById(`check-${prereq}`);
+                return prereqCheckbox && prereqCheckbox.checked;
+            });
+        }
+
+        function actualizarEstadoMateria() {
+            for (const materiaId in materias) {
+                const checkbox = document.getElementById(`check-${materiaId}`);
+                if (checkbox) {
+                    const materiaDiv = checkbox.closest('.materia');
+                    const isCompleted = checkbox.checked;
+
+                    if (isCompleted) {
+                        checkbox.disabled = true; // Deshabilitar si está completada
+                        materiaDiv.classList.remove('bloqueada');
+                        materiaDiv.classList.add('desbloqueada');
+                    } else {
+                        // Solo habilitar si no está completada y sus prerrequisitos se cumplen
+                        const canBeUnlocked = checkPrerequisites(materiaId);
+                        checkbox.disabled = !canBeUnlocked;
+                        if (canBeUnlocked) {
+                            materiaDiv.classList.remove('bloqueada');
+                            materiaDiv.classList.add('desbloqueada');
+                        } else {
+                            materiaDiv.classList.add('bloqueada');
+                            materiaDiv.classList.remove('desbloqueada');
+                        }
+                    }
+                }
+            }
+            // Volver a llamar para asegurar que todas las dependencias se actualicen
+            // Esto es necesario para cadenas de prerrequisitos
+            for (let i = 0; i < 3; i++) { // Ejecutar varias veces para asegurar propagación
+                for (const materiaId in materias) {
+                    const checkbox = document.getElementById(`check-${materiaId}`);
+                    if (checkbox && !checkbox.checked) { // Solo actualizar si no está marcada como completada
+                        const materiaDiv = checkbox.closest('.materia');
+                        const canBeUnlocked = checkPrerequisites(materiaId);
+                        checkbox.disabled = !canBeUnlocked;
+                        if (canBeUnlocked) {
+                            materiaDiv.classList.remove('bloqueada');
+                            materiaDiv.classList.add('desbloqueada');
+                        } else {
+                            materiaDiv.classList.add('bloqueada');
+                            materiaDiv.classList.remove('desbloqueada');
+                        }
+                    }
+                }
+            }
+        }
+
+        // Inicializar el estado al cargar la página
+        document.addEventListener('DOMContentLoaded', actualizarEstadoMateria);
+    </script>
+</body>
+</html>
